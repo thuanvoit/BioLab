@@ -10,7 +10,7 @@ function App() {
     <div>
       <Nav></Nav>
 
-      <div className="h-screen w-screen flex bg-white dark:bg-slate-900 overflow-y-auto justify-center pt-28 pb-20 no-scrollbar">
+      <div className="no-scrollbar flex h-screen w-screen justify-center overflow-y-auto bg-white pb-20 pt-28 dark:bg-slate-900">
         <StoreTip>
           <CleanUp />
         </StoreTip>
