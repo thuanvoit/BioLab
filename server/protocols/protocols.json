@@ -1,0 +1,65 @@
+{
+  "protocol_1": {
+    "name": "Protocol 1",
+    "description": "protocol_1 description",
+    "version": "1.0",
+    "format": "python",
+    "source": "./files/protocol_1.py",
+    "create_on": "2018-01-01 00:00:00",
+    "update_on": "2018-01-01 00:00:00"
+  },
+  "protocol_2": {
+    "name": "Protocol 2",
+    "description": "protocol_2 description",
+    "version": "1.0",
+    "format": "python",
+    "source": "./files/protocol_2.py",
+    "create_on": "2018-01-01 00:00:00",
+    "update_on": "2018-01-01 00:00:00"
+  },
+  "protocol_3": {
+    "name": "Protocol 3",
+    "description": "protocol_3 description",
+    "version": "1.0",
+    "format": "python",
+    "source": "./files/protocol_3.py",
+    "create_on": "2018-01-01 00:00:00",
+    "update_on": "2018-01-01 00:00:00"
+  },
+  "protocol_4": {
+    "name": "Protocol 4",
+    "description": "protocol_4 description",
+    "version": "1.0",
+    "format": "python",
+    "source": "./files/protocol_4.py",
+    "create_on": "2018-01-01 00:00:00",
+    "update_on": "2018-01-01 00:00:00"
+  },
+  "protocol_5": {
+    "name": "Protocol 5",
+    "description": "protocol_5 description",
+    "version": "1.0",
+    "format": "python",
+    "source": "./files/protocol_5.py",
+    "create_on": "2018-01-01 00:00:00",
+    "update_on": "2018-01-01 00:00:00"
+  },
+  "protocol_6": {
+    "name": "Protocol 6",
+    "description": "protocol_6 description",
+    "version": "1.0",
+    "format": "python",
+    "source": "./files/protocol_6.py",
+    "create_on": "2018-01-01 00:00:00",
+    "update_on": "2018-01-01 00:00:00"
+  },
+  "protocol_7": {
+    "name": "Protocol 7",
+    "description": "protocol_7 description",
+    "version": "1.0",
+    "format": "python",
+    "source": "./files/protocol_7.py",
+    "create_on": "2018-01-01 00:00:00",
+    "update_on": "2018-01-01 00:00:00"
+  }
+}
