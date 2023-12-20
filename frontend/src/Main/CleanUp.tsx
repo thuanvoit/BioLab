@@ -11,6 +11,10 @@ export const CleanUp = () => {
 
   const [protocols, setProtocols] = useState({});
   const [ready, setReady] = useState(false);
+  
+  const [isProtocol, setIsProtocol] = useState(false);
+
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const effectRan = useRef(false);
 
@@ -32,6 +36,30 @@ export const CleanUp = () => {
     setReady(true);
   };
 
+  const selectProtocol = (e) => {
+    const protocol = e.target.value;
+    if (protocol !== "#") {
+      setIsProtocol(true);
+    } else {
+      setIsProtocol(false);
+    }
+    setReady(false);
+  }
+
+  const resetModule = () => {
+    setTips({
+      startTip: [],
+      endTip: [],
+    });
+    refreshTipModule();
+    selectProtocol({target: {value: "#"}})
+  }
+
+  // refresh the module on the right
+  const refreshTipModule = () => {
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
+
   return (
     <div className="flex h-max columns-1 flex-col space-y-10">
       <div className="flex flex-row items-center justify-center space-x-10">
@@ -43,7 +71,7 @@ export const CleanUp = () => {
             <button
               type="button"
               className="rounded-full bg-red-500 px-3 py-1 text-center text-sm text-white hover:bg-red-700"
-              onClick={processProtocol}
+              onClick={resetModule}
             >
               Reset
             </button>
@@ -52,12 +80,12 @@ export const CleanUp = () => {
           <Card>{TipModuleWithInfo()}</Card>
         </Container>
 
-        <Container>
+        <Container key={refreshKey}>
           <h1 className="mb-3 text-3xl font-semibold tracking-tight text-white">
             Protocol Info
           </h1>
           <div className="mt-3">
-            <p className="text-md mb-2 w-fit rounded-full bg-gray-800 px-3 py-2 font-normal tracking-tight text-white">
+            <p className="text-md mb-2 w-fit rounded-full bg-gray-800 px-3 py-2 font-normal tracking-tight text-white shadow">
               Number of selected tips:
               {tips.numberOfTips > 0 && (
                 <span className="relative ml-2 w-fit items-center justify-between gap-5 rounded-full bg-blue-100 px-3 py-1">
@@ -68,7 +96,7 @@ export const CleanUp = () => {
               )}
             </p>
 
-            <p className="text-md mb-2 w-fit rounded-full bg-gray-800 px-3 py-2 font-normal tracking-tight text-white">
+            <p className="text-md mb-2 w-fit rounded-full bg-gray-800 px-3 py-2 font-normal tracking-tight text-white shadow">
               Starting tip:
               {tips.startTip.map((tip) => (
                 <span className="relative ml-2 w-fit items-center justify-between gap-5 rounded-full bg-green-100 px-3 py-1">
@@ -79,7 +107,7 @@ export const CleanUp = () => {
               ))}
             </p>
 
-            <p className="text-md mb-2 w-fit rounded-full bg-gray-800 px-3 py-2 font-normal tracking-tight text-white">
+            <p className="text-md mb-2 w-fit rounded-full bg-gray-800 px-3 py-2 font-normal tracking-tight text-white shadow">
               Ending tip:
               {tips.endTip.map((tip) => (
                 <span className="relative ml-2 w-fit items-center justify-between gap-5 rounded-full bg-yellow-100 px-3 py-1">
@@ -95,29 +123,34 @@ export const CleanUp = () => {
           </label>
           <select
             id="countries"
-            className="py-1text-lg text-md mb-3 block w-fit min-w-[15rem] rounded-full border border-gray-700 bg-gray-800 p-2.5 px-3  font-normal text-white placeholder-gray-400 shadow focus:border-blue-500 focus:ring-blue-500"
+            className="py-2.5 text-lg text-md mb-3 block w-fit min-w-[15rem] rounded-full bg-gray-800 p-2.5 px-3 font-normal text-white shadow"
+            onChange={selectProtocol}
           >
-            <option>Choose a protocol</option>
+            <option value="#">Choose a protocol</option>
 
             {Object.keys(protocols).map((protocol) => (
               <option value={protocol}>{protocols[protocol].name}</option>
             ))}
           </select>
 
-          <button
-            type="button"
-            className="text-md mb-2 me-2 rounded-full bg-blue-600 px-5 py-2.5 text-center font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-            onClick={processProtocol}
-          >
-            Process
-          </button>
+          {isProtocol && (
+            <>
+              <button
+                type="button"
+                className="text-md mb-2 me-2 rounded-full bg-blue-600 px-5 py-2.5 text-center font-medium text-white hover:bg-blue-700"
+                onClick={processProtocol}
+              >
+                Process
+              </button>
 
-          <button
-            type="button"
-            className="text-md mb-2 me-2 rounded-full bg-gray-500 px-5 py-2.5 text-center font-medium text-white hover:bg-gray-600 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          >
-            Details
-          </button>
+              <button
+                type="button"
+                className="text-md mb-2 me-2 rounded-full bg-gray-500 px-5 py-2.5 text-center font-medium text-white hover:bg-gray-600"
+              >
+                Details
+              </button>
+            </>
+          )}
 
           {ready && (
             <>
@@ -126,7 +159,7 @@ export const CleanUp = () => {
               </label>
               <button
                 type="button"
-                className="text-md mb-2 me-2 rounded-full bg-green-700 px-5 py-2.5 text-center font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300"
+                className="text-md mb-2 me-2 rounded-full bg-green-700 px-5 py-2.5 text-center font-medium text-white hover:bg-green-800"
               >
                 Download
               </button>

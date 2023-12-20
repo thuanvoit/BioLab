@@ -49,7 +49,7 @@ export const Nav = () => {
           className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
           id="navbar-sticky"
         >
-          <ul className="mt-4 flex flex-col rounded-lg border border-gray-700 bg-gray-800 p-4 font-medium rtl:space-x-reverse md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-gray-900 md:bg-white md:p-0">
+          <ul className="mt-4 flex flex-col rounded-lg border border-gray-700 bg-transparent p-4 font-medium rtl:space-x-reverse md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0">
             <li>
               <a
                 href="#"
