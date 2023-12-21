@@ -11,7 +11,7 @@ function App() {
       <ToastContainer newestOnTop={true} />
       <Nav></Nav>
       // protocol processing
-      <div className="no-scrollbar flex h-screen w-screen justify-center overflow-y-auto bg-slate-900 pb-20 pt-28">
+      <div className="no-scrollbar flex h-screen w-screen justify-center overflow-y-auto bg-slate-900 pb-10 pt-28">
         <StoreTip>
           <CleanUp />
         </StoreTip>
