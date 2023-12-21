@@ -15,4 +15,15 @@
   .space-x-tip-col {
     margin-left: 0.32rem;
   }
+
+  .svg-button {
+    stroke: #fff;
+    transition: stroke 0.1s ease-in-out;
+  }
+
+  .svg-button:hover {
+    stroke: red;
+    background: white;
+    border-radius: 100%;
+  }
 }

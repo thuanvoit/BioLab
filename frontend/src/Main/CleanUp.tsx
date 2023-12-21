@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 import { TipModule, TipModuleWithInfo } from "../components/Modules";
 import { Card } from "../templates/Card";
-import { Container } from "../templates/Container";
+import { Container, FullContainer } from "../templates/Container";
 import { Context } from "../services/Store";
 import { useEffect, useContext, useRef, useState } from "react";
 import axios from "axios";
@@ -16,6 +16,8 @@ export const CleanUp = () => {
   const [isProtocol, setIsProtocol] = useState(false);
 
   const [refreshKey, setRefreshKey] = useState(0);
+
+  const [description, setDescription] = useState("");
 
   const effectRan = useRef(false);
 
@@ -59,6 +61,14 @@ export const CleanUp = () => {
     setReady(false);
   };
 
+  const getProtocolDetails = (protocol) => {
+    return protocols[protocol].description;
+  };
+
+  const closeDescription = () => {
+    setDescription("");
+  };
+
   const downloadProtocol = () => {
     console.log("download");
     console.log(tips.startTip);
@@ -72,6 +82,7 @@ export const CleanUp = () => {
       endTip: [],
     });
     refreshTipModule();
+    setDescription("");
     selectProtocol({ target: { value: "#" } });
   };
 
@@ -190,6 +201,7 @@ export const CleanUp = () => {
               <button
                 type="button"
                 className="text-md mb-2 me-2 w-full rounded-full bg-gray-500 py-2.5 text-center font-medium text-white hover:bg-gray-600"
+                onClick={() => setDescription(getProtocolDetails(protocol))}
               >
                 <div className="flex justify-center gap-2">
                   <svg
@@ -246,11 +258,25 @@ export const CleanUp = () => {
         </Container>
       </div>
 
-      {/* <div className="flex flex-row items-center justify-center space-x-10">
-              <div className="min-h-[30rem] w-full min-w-[25rem] rounded-lg border border-gray-200 bg-white p-4 py-5 shadow drop-shadow dark:border-gray-600 dark:bg-slate-700">
-                  Hi
-              </div>
-            </div> */}
+      {description && (
+        <FullContainer>
+          <div className="flex justify-between">
+            <h1 className="mb-3 text-3xl font-semibold tracking-tight text-white ">
+              Protocol Details
+            </h1>
+
+            <button className="h-fit" onClick={closeDescription}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} className="w-6 h-6 svg-button">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+
+            </button>
+
+          </div>
+
+          {description}
+        </FullContainer>
+      )}
     </div>
   );
 };
